@@ -27,9 +27,9 @@
   <p>
     <strong>Profile Picture:</strong>
     <% if student.profile_picture.attached? %>
-      <%= image_tag student.profile_picture %>
+      <%= image_tag student.profile_picture, size: "150x150" %>
     <% else %>
-      <p>No profile picture uploaded yet</p>
+      <img src="https://img.icons8.com/?size=100&id=6644&format=png&color=000000"></img>
     <% end %>
   </p>
 
