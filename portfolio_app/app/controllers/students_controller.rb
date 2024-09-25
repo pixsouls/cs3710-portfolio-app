@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to @student, notice: "Student was successfully created." }
         format.json { render :show, status: :created, location: @student }
       else
-        puts @student.error.full_message
+        puts @student.errors.full_messages
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end

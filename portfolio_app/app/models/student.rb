@@ -4,7 +4,7 @@ class Student < ApplicationRecord
     # Validations to ensure presence of fields
     validates :name, presence: true
     validates :school_email, presence: true, uniqueness: true,
-                format: { with: /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/, message: "is in an invalid e-mail format"}
+                format: { with: /\A[^@\s]+@msudenver\.edu\z/, message: "must be a valid @msudenver.edu email" }
     validates :major, presence: true
     validates :minor, presence: true
     validates :graduation_date, presence: true
