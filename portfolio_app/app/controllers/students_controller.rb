@@ -3,11 +3,17 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = Student.all
+    if params[:major].present?
+      @students = Student.where(major: params[:major])
+    else
+      @students = Student.all
+    end
   end
+
 
   # GET /students/1 or /students/1.json
   def show
+    @student = Student.find(params[:id])  # Fetch a single student by ID
   end
 
   # GET /students/new
