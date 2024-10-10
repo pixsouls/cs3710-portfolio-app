@@ -16,8 +16,9 @@ gem 'puma', '~> 5.0'  # High performance web server for Ruby/Rails applications.
 gem 'jsbundling-rails'  # Manages JavaScript with modern bundlers like esbuild, rollup.js.
 gem 'cssbundling-rails'  # Manages CSS with tools like Tailwind CSS, Bootstrap.
 
-# Styling
+# Styling NOW 10/9 including bootstrap
 gem 'sass-rails', '>= 6'  # Use Sass for rich CSS with variables and mixins.
+gem 'bootstrap-sass'
 
 # Enhance and speed up HTTP navigation
 gem 'turbolinks', '~> 5'  # Makes navigating your web application faster (use with caution as it can interfere with certain JavaScript integrations).
