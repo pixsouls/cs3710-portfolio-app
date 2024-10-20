@@ -1,36 +1,25 @@
 <div id="<%= dom_id student %>">
-  <p>
-    <strong>Name:</strong>
-    <%= student.name %>
-  </p>
+    <td>
+      <%= student.first_name %>
+    </td>
 
-  <p>
-    <strong>School email:</strong>
-    <%= student.school_email %>
-  </p>
+    <td>
+      <%= student.last_name %>
+    </td>
 
-  <p>
-    <strong>Major:</strong>
-    <%= student.major %>
-  </p>
+    <td>
+      <%= student.school_email %>
+    </td>
 
-  <p>
-    <strong>Minor:</strong>
-    <%= student.minor %>
-  </p>
+    <td>
+      <%= student.major %>
+    </p>
 
-  <p>
-    <strong>Graduation date:</strong>
-    <%= student.graduation_date %>
-  </p>
+    <td>
+      <%= student.minor %>
+    </td>
 
-  <p>
-    <strong>Profile Picture:</strong>
-    <% if student.profile_picture.attached? %>
-      <%= image_tag student.profile_picture, size: "150x150" %>
-    <% else %>
-      <img src="https://img.icons8.com/?size=100&id=6644&format=png&color=000000"></img>
-    <% end %>
-  </p>
-
+    <td>
+      <%= student.graduation_date %>
+    </td>
 </div>

@@ -3,10 +3,21 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
+    # If it is not blank, then there is a major selected. Potential security flaw found though? :o
     if params[:major].present?
       @students = Student.where(major: params[:major])
+    end
+    if params[:graduation_date].present?
+      selected_date = Date.parse(params[:graduation_date])
+      if params[:time].present?
+        if params[:time] == 'before'
+          @students = Student.where('graduation_date < ?', selected_date.end_of_day)
+        else params[:time] == 'after'
+          @students = Student.where('graduation_date > ?', selected_date.beginning_of_day)
+        end
+      end
     else
-      @students = Student.all
+      @students = Student.where(major: params[:major])
     end
   end
 
@@ -54,7 +65,7 @@ class StudentsController < ApplicationController
     end
   end
 
-  # DELETE /students/1 or /students/1.json
+    
   def destroy
     @student.destroy!
 
@@ -72,6 +83,6 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:name, :school_email, :major, :minor, :graduation_date, :profile_picture)
+      params.require(:student).permit(:first_name, :last_name, :school_email, :major, :minor, :graduation_date, :profile_picture, :time, :graduation_date)
     end
 end

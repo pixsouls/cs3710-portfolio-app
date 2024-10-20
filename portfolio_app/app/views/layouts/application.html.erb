@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
  <head>
    <title>YourApp</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,17 +14,57 @@
  </head>
 
  <body>
-<!--Test Dropdown  -->
-   <div class="dropdown">
-     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-       Dropdown button
+   <div class="dropdown" role="search">
+     <button id='MajorDropDown' class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Major
      </button>
      <ul class="dropdown-menu">
-       <li><a class="dropdown-item" href="students?major=Computer%20Science">Computer Science</a></li>
-       <li><a class="dropdown-item" href="#">Cyber Security</a></li>
-       <li><a class="dropdown-item" href="#">Computer Engineering</a></li>
+      <li><a class="dropdown-item" href="#" onclick="setMajor('?major=')" role='menuitemcheckbox'>Any</a></li>
+      <li><a class="dropdown-item" href="#" onclick="setMajor('?major=Computer%20Science', 'Computer Science')" role='menuitemcheckbox'>Computer Science</a></li>
+      <li><a class="dropdown-item" href="#" onclick="setMajor('?major=Cyber%20Security', 'Cyber Security')" role='menuitemcheckbox'>Cyber Security</a></li>
+      <li><a class="dropdown-item" href="#" onclick="setMajor('?major=Computer%20Engineering', 'Computer Engineering')" role='menuitemcheckbox'>Computer Engineering</a></li>
      </ul>
    </div>
+   <div class="dropdown" role="search">
+     <button id='GraduationDropDown' class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+       Graduation Date
+     </button>
+     <ul class="dropdown-menu">
+       <li><a class="dropdown-item" onclick="setTime('&time=before')" role='menuitemcheckbox'>Before</a></li>
+       <li><a class="dropdown-item" onclick="setTime('&time=after')" role='menuitemcheckbox'>After</a></li>
+     </ul>
+   </div>
+    <label for="graduationDate" role="search">Start</label>
+    <input id="graduationDate" class="form-control" type="date" />
+
+    <button type="submit" class="button btn-primary" onclick="submit()" role="button">Search</button>
    <%= yield %>
  </body>
+ <script>
+ let urlBuilder = 'students'
+ let majorURL = ''
+ let timeURL = ''
+  function setMajor(major, newLabel) {
+    document.getElementById('MajorDropDown').innerHTML = newLabel
+    majorURL = major;
+  }
+
+  function setTime(time) {
+    document.getElementById('GraduationDropDown').innerHTML = time.includes('before') ? 'before' : 'after';
+    timeURL = time
+  }
+
+  function submit() {
+    if (document.getElementById('graduationDate').value === '' || timeURL === '') {
+      console.log('invalid url')
+      return
+    } else {
+      urlBuilder = 'students'
+      urlBuilder += majorURL
+      urlBuilder += timeURL
+      urlBuilder += "&graduation_date=" + document.getElementById('graduationDate').value
+      window.location.href = urlBuilder
+    }
+  }
+ </script>
 </html>

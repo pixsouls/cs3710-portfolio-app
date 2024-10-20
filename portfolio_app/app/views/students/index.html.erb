@@ -3,12 +3,28 @@
 <h1>Students</h1>
 
 <div id="students">
-  <% @students.each do |student| %>
-    <%= render student %>
-    <p>
-      <%= link_to "Show this student", student %>
-    </p>
-  <% end %>
+  <%= link_to "New student", new_student_path, class: "btn btn-success text-light" %>
+  <table class="table table-striped">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Major</th>
+      <th>Minor</th>
+      <th>Graduation Date</th>
+      <th>Actions</th>
+    </tr>
+    <% @students.each do |student| %>
+      <tr>
+        <%= render student %>
+        <td>
+          <%= link_to "Show", student, class: "btn btn-primary text-body" %>
+          <%= link_to "Edit", edit_student_path(student), class: "btn btn-warning text-body" %>
+          <%= link_to "Delete", delete_student_path(student), class: "btn btn-danger text-light" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
-<%= link_to "New student", new_student_path %>
+
