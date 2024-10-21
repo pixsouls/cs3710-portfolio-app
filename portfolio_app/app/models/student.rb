@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-    has_one_attached :profile_picture
+    has_one_attached :profile_picture, dependent: :purge_later
     VALID_MAJORS = ["Computer Science", "Cyber Security", "Computer Engineering"]
 
     # Validations to ensure presence of fields

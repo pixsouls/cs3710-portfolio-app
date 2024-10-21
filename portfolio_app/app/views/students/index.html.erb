@@ -18,13 +18,23 @@
       <tr>
         <%= render student %>
         <td>
-          <%= link_to "Show", student, class: "btn btn-primary text-body" %>
-          <%= link_to "Edit", edit_student_path(student), class: "btn btn-warning text-body" %>
-          <%= link_to "Delete", delete_student_path(student), class: "btn btn-danger text-light" %>
+          <%= link_to "Show", student, class: "btn purple text-light", role:'button' %>
+          <%= link_to "Edit", edit_student_path(student), class: "btn pink text-light", role:'button' %>
+          <%= link_to "Delete", delete_student_path(student), class: "btn btn-danger text-light", role:'button' %>
         </td>
       </tr>
     <% end %>
   </table>
 </div>
 
-
+<style>
+  .indigo {
+    background-color: #6610f2;
+  }
+  .purple {
+    background-color: #6f42c1;
+  }
+  .pink {
+    background-color: #d63384;
+  }
+</style>
