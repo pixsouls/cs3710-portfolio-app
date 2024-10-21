@@ -1,6 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @student %>
+<% if @student.profile_picture.attached? %>
+  <%= image_tag(url_for(@student.profile_picture)) %>
+<% else %>
+  <img src='https://t3.ftcdn.net/jpg/05/87/76/66/360_F_587766653_PkBNyGx7mQh9l1XXPtCAq1lBgOsLl6xH.jpg'>
+<% end %>
+
+<table class="table vert-table table-bordered">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Major</th>
+    <th>Minor</th>
+    <th>Expected Graduation</th>
+  </tr>
+  <%= render @student %>
+</table>
 
 <div>
   <%= link_to "Edit this student", edit_student_path(@student) %> |
