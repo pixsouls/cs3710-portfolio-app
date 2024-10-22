@@ -7,10 +7,10 @@
   <table class="table table-striped">
     <tr>
       <th>First Name</th>
-      <th>Last Name</th>
+      <th class="one">Last Name</th>
       <th>Email</th>
       <th>Major</th>
-      <th>Minor</th>
+      <th class="one">Minor</th>
       <th>Graduation Date</th>
       <th>Actions</th>
     </tr>
@@ -39,5 +39,10 @@
   }
   .pink {
     background-color: #d63384;
+  }
+  @media only screen and (max-width: 900px) {
+    .one{
+        display: none;
+    }
   }
 </style>
