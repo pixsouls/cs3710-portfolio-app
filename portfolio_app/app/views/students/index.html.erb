@@ -4,7 +4,7 @@
 
 <div id="students">
   <%= link_to "New student", new_student_path, class: "btn btn-success text-light" %>
-  <table class="table table-striped">
+  <table class="small-table table table-striped">
     <tr>
       <th>First Name</th>
       <th class="one">Last Name</th>
@@ -18,9 +18,11 @@
       <tr>
         <%= render student %>
         <td>
-          <%= link_to "Show", student, class: "btn purple text-light", role:'button' %>
-          <%= link_to "Edit", edit_student_path(student), class: "btn pink text-light", role:'button' %>
-          <%= link_to "Delete", delete_student_path(student), class: "btn btn-danger text-light", role:'button' %>
+          <div class="button-flex-container">
+            <%= link_to "Show", student, class: "small-btn btn purple text-light", role:'button' %>
+            <%= link_to "Edit", edit_student_path(student), class: "small-btn btn pink text-light", role:'button' %>
+            <%= link_to "Delete", delete_student_path(student), class: "small-btn btn btn-danger text-light", role:'button' %>
+          </div
         </td>
       </tr>
     <% end %>
@@ -44,5 +46,23 @@
     .one{
         display: none;
     }
+    .small-table {
+      font-size: 10px;
+      table-layout:fixed;
+    }
+    .small-btn {
+      font-size: 8px;
+      padding: 8px;
+      flex-direction: row;
+    }
+    .flex-container {
+      flex-direction: column;
+      padding: 4px;
+    }
+  }
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
   }
 </style>

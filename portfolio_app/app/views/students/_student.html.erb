@@ -1,5 +1,5 @@
 <div id="<%= dom_id student %>">
-    <td>
+    <td class='small'>
       <%= student.first_name %>
     </td>
 
@@ -7,11 +7,11 @@
       <%= student.last_name %>
     </td>
 
-    <td>
+    <td class='small'>
       <%= student.school_email %>
     </td>
 
-    <td>
+    <td class='small'>
       <%= student.major %>
     </p>
 
@@ -19,15 +19,18 @@
       <%= student.minor %>
     </td>
 
-    <td>
+    <td class='small'>
       <%= student.graduation_date %>
     </td>
 </div>
 
 <style>
   @media only screen and (max-width: 900px) {
-    .one{
+    .one {
         display: none;
+    }
+    .small {
+      font-size: 12px;
     }
   }
 </style>
