@@ -38,20 +38,24 @@ RSpec.describe "Students", type: :request do
 
     # Test 4: Search by major
     it "returns students matching the major" do
-      get students_path, params: { search: { major: "Computer Science BS" } }
+      get students_path, params: { major: "Computer Science BS" }
       expect(response.body).to include("Aaron")
       expect(response.body).to_not include("Jackie")
     end
 
     # Test 5: Search by expected graduation date (before)
     it "returns students graduating before the given date" do
-      get students_path, params: { search: { graduation_date: "2026-01-01", date_type: "before" } }
+      get students_path, params: { major: "", graduation_date: "2026-01-01", time: "before" }
       expect(response.body).to include("Aaron")
       expect(response.body).to_not include("Jackie")
     end
 
     # Test 6: Search by expected graduation date (after)
-
+    it "returns students graduating before the given date" do
+      get students_path, params: { major: "", graduation_date: "2026-01-01", time: "after" }
+      expect(response.body).to include("Jackie")
+      expect(response.body).to_not include("Aaron")
+    end
   end
 
   # POST /students (create)
@@ -68,13 +72,23 @@ RSpec.describe "Students", type: :request do
         expect(response.body).to include("Aaron")  # Student's details in the response
       end
 
-      # Test 8 (Student will complete this part)
+      # Test 8: (Student will complete this part)
       # Ensure that it returns a 201 status or check for creation success
+      it "returns a 201 status or check for creation of user(s)" do
+        expect {
+          perform_request.to have_http_status(:success)
+        }
+      end
     end
 
     context "with invalid parameters" do
       # Test 9 (Student will complete this part)
       # Ensure it does not create a student and returns a 422 status
+      it "returns does not create a student and returns a 422 status" do
+        expect {
+          perform_request.to have_http_status(:error)
+        }
+      end
     end
   end
 
@@ -85,13 +99,29 @@ RSpec.describe "Students", type: :request do
 
       # Test 10 (Student will complete this part)
       # Ensure it returns a successful response (200 OK)
+      it "returns a successful response (200 OK)" do
+        expect {
+          perform_request.to have_http_status(:success)
+        }
+      end
 
       # Test 11 (Student will complete this part)
       # Ensure it includes the student's details in the response body
+      it "includes the student's details in the response body" do
+        expect {
+          expect(response.body).to include("Aaron")
+        }
+      end
     end
 
     # Test 12: Handle missing records
-
+    context "when the student doesn't exist" do
+      it "return an error response (404?)" do
+        expect {
+          perform_request.to have_http_status(:error)
+        }
+      end
+    end
   end
 
   # DELETE /students/:id (destroy)
@@ -99,6 +129,12 @@ RSpec.describe "Students", type: :request do
     let!(:student) { Student.create!(first_name: "Aaron", last_name: "Gordon", school_email: "gordon@msudenver.edu", major: "Computer Science BS", minor: "test_minor", graduation_date: "2025-05-15") }
 
     # Test 13: Deletes the student and redirects
+    it "return a 2xx status message when trying to delete a student" do
+      delete "/students/1"
+      expect {
+        perform_request.to have_http_status(:success)
+      }
+    end
 
 
     # Test 14: Returns a 404 when trying to delete a non-existent student

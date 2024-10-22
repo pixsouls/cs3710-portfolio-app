@@ -19,6 +19,9 @@ class StudentsController < ApplicationController
     else
       @students = Student.where(major: params[:major])
     end
+    if params[:major].blank? and params[:time].blank? and params[:time].blank?
+      @message = "Please enter search criteria to find students"
+    end
   end
 
 

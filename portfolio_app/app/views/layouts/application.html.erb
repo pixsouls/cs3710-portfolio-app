@@ -15,7 +15,7 @@
 
  <body>
    <div class="dropdown" role="search">
-     <button id='MajorDropDown' class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+     <button id='MajorDropDown' class="btn btn-primary dropdown-toggle mt-2 ml-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Major
      </button>
      <ul class="dropdown-menu">
@@ -26,7 +26,7 @@
      </ul>
    </div>
    <div class="dropdown" role="search">
-     <button id='GraduationDropDown' class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+     <button id='GraduationDropDown' class="btn btn-primary dropdown-toggle mt-2 ml-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
        Graduation Date
      </button>
      <ul class="dropdown-menu">
@@ -35,7 +35,7 @@
      </ul>
    </div>
     <label for="graduationDate" role="search">Start</label>
-    <input id="graduationDate" class="form-control" type="date" />
+    <input id="graduationDate" class="form-control mt-2" type="date" />
 
     <button type="submit" class="button btn-primary" onclick="submit()" role="button">Search</button>
    <%= yield %>
